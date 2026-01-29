@@ -1,0 +1,122 @@
+PRACTICAL NO. 6 
+Aim: Practical on Exploiting Web-based applications 
+
+Step 1: WAF Detection using Nmap
+sudo nmap -vv -p 80 --script http-waf-detect www.testfire.net
+
+🔍 Matlab:
+
+-vv → very verbose output
+
+-p 80 → HTTP port
+
+http-waf-detect → WAF detection script
+
+👉 Check karta hai:
+
+Website protected hai ya nahi
+
+Web Application Firewall present hai ya nahi
+
+🔹 Step 2: WAF Detection using Wafw00f
+wafw00f https://demo.owasp-juice.shop/
+
+🔍 Matlab:
+
+Dedicated WAF detection tool
+
+Bataata hai:
+
+WAF present hai?
+
+Kaunsa WAF (Cloudflare, AWS WAF, etc.)
+
+📌 Nmap + wafw00f = confirmation
+
+🔹 Step 3: Load Balancer Detection
+sudo lbd www.hdfcbank.com
+
+🔍 Matlab:
+
+LBD = Load Balancer Detector
+
+Check karta hai:
+
+Website multiple backend servers use kar rahi hai ya nahi
+
+👉 Load balancers security + availability dono ke liye hote hain
+
+🔹 Step 4: WordPress Vulnerability Scan
+wpscan --url https://wpdemo.net/
+
+🔍 Matlab:
+
+WordPress core
+
+Themes & plugins vulnerabilities
+
+User enumeration (if enabled)
+
+📌 WordPress = most attacked CMS
+
+🔹 Step 5: Install HTTrack
+sudo apt install -y httrack
+
+🔍 Matlab:
+
+HTTrack = website mirroring tool
+
+Website ka offline copy banata hai
+
+🔹 Step 6: Website Mirroring
+httrack www.testfire.net -O testfire
+
+🔍 Matlab:
+
+Website ke HTML, CSS, JS files download hote hain
+
+-O testfire → output folder ka naam
+
+👉 Attacker website structure samajh sakta hai
+
+🔹 Step 7: Navigate to Downloaded Files
+cd testfire
+
+🔹 Step 8: List Downloaded Files
+ls
+
+
+👉 Website ke:
+
+Pages
+
+Images
+
+Scripts
+dikh jaate hain
+
+🔹 Step 9: Install DirBuster
+sudo apt install -y dirbuster
+
+🔍 Matlab:
+
+DirBuster = directory brute-forcing tool
+
+Hidden folders dhundhne ke liye
+
+🔹 Step 10: Run DirBuster
+dirbuster
+
+🔍 Matlab:
+
+GUI tool open hota hai
+
+Hidden directories jaise:
+
+/admin
+
+/backup
+
+/uploads
+
+detect karta hai

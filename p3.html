@@ -1,0 +1,124 @@
+PRACTICAL NO. 3
+Enumerating Host, Port & Service Scanning
+Aim (Simple words me)
+
+Is practical ka aim hai target system / domain ke baare me maximum information collect karna, jaise:
+
+Open ports
+Running services
+Operating system
+DNS details
+Mail servers
+Domain owner info
+Web Application Firewall (WAF)
+Ye sab penetration testing ka reconnaissance + scanning phase hota hai.
+
+###########
+PART 1: Nmap – Host, Port & Service Scanning
+########
+Step 1: Full Port Scan + OS & Service Detection
+
+sudo nmap -v -p 0-65535 -A <IP address> -oA metasploitable2
+
+Matlab:
+-v → verbose output
+-p 0-65535 → all ports scan
+-A → OS detection + service detection + scripts
+-oA metasploitable2 → output save karega (txt, xml, nmap)
+
+Step 2: TCP SYN Scan + OS Detection
+
+sudo nmap -sS -O <IP address>
+
+Step 3: Service Version Detection
+sudo nmap -sV <IP address>
+
+#########################
+PART 2: DNS & Domain Enumeration
+Step 4: Find IP Address of Domain
+
+==>host packethub.com
+
+Domain → IP address mapping
+
+Step 5: Find Name Servers (NS)
+
+--> host -t ns packethub.com
+
+Bataata hai:
+Kaunse DNS servers domain ko control karte hain
+
+Step 6: Find Mail Servers (MX)
+host -t mx packethub.com
+
+
+👉 Email handling servers ka pata chalta hai
+
+Step 6: Find Mail Servers (MX)
+host -t mx packethub.com
+
+
+👉 Email handling servers ka pata chalta hai
+
+🪜 Step 7: Interactive DNS Query
+nslookup packethub.com
+
+
+👉 DNS records manually query kar sakte ho
+👉 Old but exam-important tool
+
+🪜 Step 8: Detailed DNS Information
+dig packethub.com
+
+
+👉 Advanced DNS lookup
+👉 Fast & detailed
+
+🪜 Step 9: Mail Server Records (MX)
+dig packethub.com mx
+
+🪜 Step 10: IPv4 Address (A record)
+dig packethub.com a
+
+🪜 Step 11: Name Server Records (NS)
+dig packethub.com ns
+
+🪜 Step 12: Domain Registration Details (WHOIS)
+whois facebook.com
+
+
+👉 Shows:
+
+Domain owner
+
+Registrar
+
+Creation & expiry date
+
+⚠️ Pure OSINT info
+
+🪜 Step 13: DNS Reconnaissance using dnsrecon
+dnsrecon -t std -d www.packethub.com
+
+#####################################
+PART 3: Web Application Firewall Detection
+🪜 Step 14: WAF Detection using wafw00f
+wafw00f https://demo.owasp-juice.shop/
+
+#########################################################
+########################################################
+maam:
+•	sudo nmap -v -p 0-65535 -A <IP address> -oA metasploitable2
+•	sudo nmap -sS -O <IP address>
+•	sudo nmap -sV <IP address>
+•	host packethub.com
+•	host -t ns packethub.com
+•	host -t mx packethub.com
+•	nslookup
+•	dig packethub.com
+•	dig packethub.com mx
+•	dig packethub.com a
+•	dig packethub.com ns
+•	whois facebook.com
+•	dnsrecon -t std -d ww.packethub.com
+•	wafw00f https://demo.owasp-juice.shop/

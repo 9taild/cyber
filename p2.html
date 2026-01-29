@@ -1,0 +1,163 @@
+PRACTICAL NO. 2 Aim: Use of open-source intelligence and passive reconnaissance. Steps 1. install sublin3r sudo apt install sublist3r sublist3r -d packtpub.com -t 3 -e bing
+
+###########################################################################################
+###################
+1. install sublin3r 
+###################
+Step 1: Install Sublist3r
+
+=> sudo apt install sublist3r
+
+step 2: Run Sublist3r for OSINT
+
+=>sublist3r -d packtpub.com -t 3 -e bing
+
+in if  -e bing is not worked just use others search engins.. just remove -e bing
+
+=>sublist3r -d packtpub.com -t 3 -e bing
+###############################################################################################
+2. Install Maltego 
+#########################
+step 1 : create maltago account 
+open browser 
+https://www.maltego.com/ce-registration/
+
+Step 2: Open Maltego in Kali Linux
+Kali Linux me:
+Applications → Information Gathering → Maltego
+Maltego open hoga
+
+step 3: Accept License & Login
+Accept License Agreement
+Choose:
+Login to use the free online version
+Apna Maltego account username & password enter karo
+Login successful
+
+Step 4: Install Transforms
+Login ke baad wizard start hota hai:
+Click Next to install transforms
+Click Next again
+Browser selection page aayega
+Firefox / any browser select karo
+Click Next
+
+Step 5: Choose Footprint L1
+Transform selection screen me:
+Footprint L1 choose karo
+Click Next
+ Footprint L1 = basic passive reconnaissance
+DNS
+Subdomains
+IP addresses
+
+
+Step 6: Enter Target Domain
+Domain enter karo:
+cyberhia.com
+(ya jo examiner bole)
+Click Finish
+
+###################################################################
+3) OSRF framwork
+#######################
+Step 1: Install pip3 (Python Package Manager)
+Kali Linux terminal open karo aur run karo:
+sudo apt install python3-pip
+
+Step 2: Install OSRFramework
+sudo apt install osrframework
+
+Step 3: Usufy – Username Footprinting
+Usufy sub-command ka use hota hai:
+Ek username ko multiple platforms par search karne ke liye
+Command:
+Option 1: Single username ke liye (MOST COMMON)
+usufy -n cyberhia
+
+Option 2: Info mode (Viva-friendly)
+usufy --info -n cyberhia
+
+Step 4: Mailfy – Email Enumeration
+Mailfy ka use hota hai:
+Username se related email addresses dhundhne ke liye
+Command:
+sudo mailfy -n cyberhia
+
+
+Step 5: Searchfy – Deep Search
+Searchfy use hota hai:
+Username / keyword ka deep OSINT search karne ke liye
+Command:
+searchfy cyberhia
+
+################################################################
+4)Creating Custom Wordlists for Password Cracking using CeWL
+#####################################
+Step 1: Check / Install CeWL
+Kali Linux me CeWL mostly pre-installed hota hai
+Check karne ke liye:
+
+cewl --help
+
+Agar install na ho:
+
+sudo apt install cewl
+
+Step 2: Create Custom Wordlist from Website
+cewl www.google.com -w google.txt
+
+
+Step 4: View Generated Wordlist
+cat google.txt
+
+Ya count words:
+
+wc -l google.com
+
+##########################################################
+5)Nmap
+######################
+
+Step 1: Find IP Address of Metasploitable2
+ Metasploitable2 VM open karo
+Login:
+Username: msfadmin
+Password: msfadmin
+Run:
+
+ifconfig
+
+Note down:
+inet addr → Target IP address
+
+ Step 2: Scan Target using Nmap (Kali Linux)
+Kali Linux terminal open karo
+Example:
+
+nmap 10.219.95.125
+
+Step 3: Start Metasploit Framework (MSF Console)
+Kali Linux terminal me:
+
+msfconsole
+
+
+Step 4: Search for Vulnerability (ms08_067)
+MSF console ke andar:
+
+search ms08_067
+
+###############################################################
+6) the harvester 
+#####################
+Step 1: Install theHarvester
+
+Kali Linux me mostly pre-installed hota hai.
+Check karo:
+
+theHarvester -h
+
+Step 2: Domain Enumeration using theHarvester
+theHarvester -d example.com -b all -f harvester.html
+

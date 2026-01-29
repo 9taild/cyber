@@ -1,0 +1,94 @@
+PRACTICAL NO. 4
+Vulnerability Scanning and Assessment
+
+Step 1: Update Nmap Scripts
+sudo nmap --script-updatedb
+
+Matlab:
+
+Nmap ke NSE (Nmap Scripting Engine) scripts update hote hain
+
+Latest vulnerability checks available ho jaate hain
+
+📌 NSE scripts = pre-written scripts for vulnerability detection
+
+🔹 Step 2: Default Script Scan
+sudo nmap -sC <IP address>
+example sudo nmap -sC 10.219.95.125
+
+🔍 Matlab:
+
+-sC = default NSE scripts
+
+Automatically common vulnerabilities test karta hai
+
+👉 Safe + fast vulnerability scan
+
+🔹 Step 3: SSH Script Scan
+nmap --script=ssh-run <IP address>
+
+🔍 Matlab:
+
+SSH service se related info collect karta hai
+
+Authentication methods, banners, etc.
+
+📌 SSH misconfiguration detection ke liye
+
+🔹 Step 4: HTTP TRACE Method Test
+nmap --script=http-trace <IP address>
+
+🔍 Matlab:
+
+Check karta hai HTTP TRACE method enabled hai ya nahi
+
+TRACE enabled hona = security risk (XST attack)
+
+🔹 Step 5: Nikto Web Scan (Apache Users Enumeration)
+nikto -host 45.33.32.156 -port 80 \
+-Plugins "apacheusers(enumerate,dictionary:/full/path/to/users.txt)" \
+-output apacheuser.xml
+
+🔍 Matlab:
+
+Nikto = web server vulnerability scanner
+
+Apache users enumerate karta hai
+
+Output XML format me save hota hai
+
+📌 XML output reporting ke liye use hota hai
+
+🔹 Step 6: View Nikto Output
+cat apacheuser.xml
+
+🔍 Matlab:
+
+XML file ka content terminal me display hota hai
+
+Found vulnerabilities dekhe jaate hain
+
+🔹 Step 7: WordPress Vulnerability Scan
+wpscan --url https://wpdemo.net/
+
+🔍 Matlab:
+
+WordPress core, themes, plugins vulnerabilities detect karta hai
+
+Passive + active checks
+
+📌 WordPress-specific security testing
+
+🔹 Step 8: Install OWASP ZAP
+sudo apt install zaproxy -y
+
+🔍 Matlab:
+
+OWASP ZAP web application scanner install hota hai
+
+Run karne ke liye:
+
+zaproxy
+
+
+👉 GUI based vulnerability scanner
